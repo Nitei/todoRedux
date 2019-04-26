@@ -1,4 +1,4 @@
 <header class="header">
   <h1>Tareas</h1>
-  <input class="new-todo" placeholder="¿Que falta por completar?" autofocus>
+  <input class="new-todo" [formControl]="txtInput" (keydown.enter)="agregarTarea()" placeholder="¿Que falta por completar?" autofocus>
 </header>
