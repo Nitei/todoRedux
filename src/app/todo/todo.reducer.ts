@@ -21,6 +21,18 @@ export function tareaReducer( state = estadoInicial, action: tareas.Acciones ): 
         case tareas.AGREGAR_TAREA:
             const tarea = new Todo(action.texto);
             return [ ...state, tarea ];
+
+        case tareas.TOGGLE_TAREA:
+            return state.map( iteraciones => {
+                if (action.id === iteraciones.id) {
+                    return {
+                        ...iteraciones,
+                        completado: !iteraciones.completado
+                    }
+                } else {
+                    return iteraciones;
+                }
+            });
         default:
             return state;
     }
