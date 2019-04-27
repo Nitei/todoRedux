@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { Todo } from '../model/todo.model';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-item',
@@ -8,12 +9,30 @@ import { Todo } from '../model/todo.model';
 })
 export class TodoItemComponent implements OnInit {
   @Input() todo: Todo[];
+  @ViewChild('txtInputFisico') txtInputFisico: ElementRef;
+
+
+  chkField: FormControl;
+  txtInput: FormControl;
+
+  editando: boolean;
 
   constructor() {
-
    }
 
   ngOnInit() {
+    this.chkField = new FormControl(this.todo['completado']);
+    this.txtInput = new FormControl(this.todo['texto'], Validators.required);
+    console.log(this.todo);
+  }
+
+  editar() {
+    this.editando = !this.editando;
+    setTimeout(() => { this.txtInputFisico.nativeElement.select(); }, 1);
+  }
+
+  terminarEdicion() {
+    this.editando = !this.editando;
   }
 
 }
