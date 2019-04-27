@@ -3,6 +3,7 @@ import { Action } from '@ngrx/store';
 export const AGREGAR_TAREA = '[TODO] Agregar tarea';
 export const TOGGLE_TAREA = '[TODO] Toggle tarea';
 export const EDITAR_TAREA = '[TODO] Editar tarea';
+export const BORRAR_TAREA = '[TODO] Borrar tarea';
 
 export class AgregarTareaAction implements Action {
     readonly type = AGREGAR_TAREA;
@@ -22,7 +23,14 @@ export class EditarTareaAction implements Action {
     constructor(public texto: string, public id: number) {}
 }
 
+export class BorrarTareaAction implements Action {
+    readonly type = BORRAR_TAREA;
+
+    constructor(public id: number) {}
+}
+
 export type Acciones =
 ToggleTareaAction |
+BorrarTareaAction |
 EditarTareaAction |
 AgregarTareaAction;

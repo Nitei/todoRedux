@@ -45,7 +45,13 @@ export function tareaReducer( state = estadoInicial, action: tareas.Acciones ): 
                 }
             });
 
+        case tareas.BORRAR_TAREA:
+            return state.filter(iteracion => { 
+                return iteracion.id !== action.id;
+                })
+
         default:
+        console.log(state);
             return state;
     }
 }

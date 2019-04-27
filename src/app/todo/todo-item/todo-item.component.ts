@@ -3,7 +3,7 @@ import { Todo } from '../model/todo.model';
 import { FormControl, Validators } from '@angular/forms';
 import { AppState } from '../../app.reducers';
 import { Store } from '@ngrx/store';
-import { ToggleTareaAction, EditarTareaAction } from '../todo.actions';
+import { ToggleTareaAction, EditarTareaAction, BorrarTareaAction } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -47,6 +47,11 @@ export class TodoItemComponent implements OnInit {
       const accion = new EditarTareaAction(this.txtInputFisico.nativeElement.value, this.todo['id']);
       this.store.dispatch(accion)
     }
+  }
+
+  borrarTarea() {
+    const accion = new BorrarTareaAction(this.todo['id'])
+    this.store.dispatch(accion)
   }
 
 }
