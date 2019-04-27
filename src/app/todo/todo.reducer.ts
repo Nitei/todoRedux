@@ -55,7 +55,6 @@ export function tareaReducer( state = estadoInicial, action: tareas.Acciones ): 
                 return {
                     ...iteraciones,
                     completado: action.completado
-                    
                 }
             });
 
