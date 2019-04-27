@@ -50,8 +50,16 @@ export function tareaReducer( state = estadoInicial, action: tareas.Acciones ): 
                 return iteracion.id !== action.id;
                 })
 
+        case tareas.TOGGLE_ALL_COMPLETADOS_TAREA:
+            return state.map( iteraciones => {
+                return {
+                    ...iteraciones,
+                    completado: action.completado
+                    
+                }
+            });
+
         default:
-        console.log(state);
             return state;
     }
 }
