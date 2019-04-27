@@ -3,7 +3,7 @@ import { Todo } from '../model/todo.model';
 import { FormControl, Validators } from '@angular/forms';
 import { AppState } from '../../app.reducers';
 import { Store } from '@ngrx/store';
-import { ToggleTareaAction } from '../todo.actions';
+import { ToggleTareaAction, EditarTareaAction } from '../todo.actions';
 
 @Component({
   selector: 'app-todo-item',
@@ -26,7 +26,6 @@ export class TodoItemComponent implements OnInit {
   ngOnInit() {
     this.chkField = new FormControl(this.todo['completado']);
     this.txtInput = new FormControl(this.todo['texto'], Validators.required);
-    console.log(this.todo);
 
     this.chkField.valueChanges.subscribe(data => {
       const accion = new ToggleTareaAction(this.todo['id'])
@@ -41,6 +40,13 @@ export class TodoItemComponent implements OnInit {
 
   terminarEdicion() {
     this.editando = !this.editando;
+    if (
+      this.txtInputFisico.nativeElement.value !== this.todo['texto'] &&
+      this.txtInput.valid
+      ) {
+      const accion = new EditarTareaAction(this.txtInputFisico.nativeElement.value, this.todo['id']);
+      this.store.dispatch(accion)
+    }
   }
 
 }

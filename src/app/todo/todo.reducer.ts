@@ -33,6 +33,18 @@ export function tareaReducer( state = estadoInicial, action: tareas.Acciones ): 
                     return iteraciones;
                 }
             });
+        case tareas.EDITAR_TAREA:
+            return state.map( iteracion => {
+                if (action.id === iteracion.id) {
+                    return {
+                        ...iteracion,
+                        texto: action.texto
+                    }
+                } else {
+                    return iteracion;
+                }
+            });
+
         default:
             return state;
     }
