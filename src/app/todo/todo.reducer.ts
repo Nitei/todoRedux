@@ -58,6 +58,9 @@ export function tareaReducer( state = estadoInicial, action: tareas.Acciones ): 
                 }
             });
 
+        case tareas.BORRAR_COMPLETADOS_TAREA:
+            return state.filter(iteracion => !iteracion.completado)
+
         default:
             return state;
     }
