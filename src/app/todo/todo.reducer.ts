@@ -3,10 +3,11 @@ import { Todo } from './model/todo.model';
 
 // Este es el reducer
 
-const todo1 = new Todo('Vencer a thanos');
-const todo2 = new Todo('Salvar el mundo');
-const todo3 = new Todo('Pedir prestado el traje a ironman');
-const estadoInicial: Todo[] = [todo1, todo2, todo3];
+const todo1 = new Todo('Hacer barbacoa');
+const todo2 = new Todo('Apr3md3r a eskryvyr vyem');
+const todo3 = new Todo('Viajar por el mundo');
+const todo4 = new Todo('Crear el bocata perfecto');
+const estadoInicial: Todo[] = [todo1, todo2, todo3, todo4];
 
 todo2.completado = true;
 // const estadoInicial: Todo[] = [
