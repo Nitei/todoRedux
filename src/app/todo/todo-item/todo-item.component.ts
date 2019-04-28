@@ -5,13 +5,22 @@ import { AppState } from '../../app.reducers';
 import { Store } from '@ngrx/store';
 import { ToggleTareaAction, EditarTareaAction, BorrarTareaAction } from '../todo.actions';
 
+interface Todos {
+  todo: Todo[];
+  texto: string;
+  id: number;
+  completado: boolean;
+}
+
 @Component({
   selector: 'app-todo-item',
   templateUrl: './todo-item.component.html',
   styles: []
 })
+
+
 export class TodoItemComponent implements OnInit {
-  @Input() todo: Todo[];
+  @Input() todo: Todos;
   @ViewChild('txtInputFisico') txtInputFisico: ElementRef;
 
 
